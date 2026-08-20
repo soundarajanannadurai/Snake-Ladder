@@ -16,8 +16,6 @@ for(let i=0;i<l.length;i+=2){
     ladder.push([+l[i],+l[i+1]]);
 }
 
-console.log(snake,ladder)
-
 
 let mapSnake=new Map();
 let mapLadder=new Map();
@@ -72,8 +70,6 @@ for(let i of ladder){
     
     mapLadder.set(i[0],i[1]);
 }
-
-console.log(mapLadder,mapSnake)
 
 const btn=document.createElement("button");
 btn.textContent="dice";
