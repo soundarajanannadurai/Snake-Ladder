@@ -2,7 +2,7 @@ const table=document.getElementById("table");
 const add=document.getElementById("div");
 const number=document.getElementById("number");
 const logout=document.getElementById("logout");
-
+const show=document.getElementById("status");
 let s=localStorage.getItem("snake").split(",");
 let l=localStorage.getItem("ladder").split(",");
 
@@ -83,14 +83,14 @@ t.innerHTML+="XY"
 
 async function play(){
     while(startA!=100 && startB!=100){
-        console.log("Player 1");
+
         await move(startA,1);
         
         if(startA==100){
             alert("Player 1 win");
             break;
         }
-        console.log("Player 2");
+        
         await move(startB,2);
        
         if(startB==100){
@@ -105,6 +105,7 @@ play();
 
 async function move(start,player,flag=false){
 
+    show.innerHTML=`Player ${player}`;
     let roll=await getRoll();
 
     
@@ -203,6 +204,7 @@ async function move(start,player,flag=false){
     if(roll==6){
         await move(start,player);
     }
+    
 
 }
 

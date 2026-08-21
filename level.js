@@ -13,7 +13,7 @@ let levels = {
     },
 
     hard: {
-        snake: [[14, 4],[24, 8],[33, 12],[43, 19],[52, 27],[61, 35],[69, 41],[78, 48],[86, 55],[93, 63],[99, 71]],
+        snake: [[14, 4],[24, 8],[33, 12],[43, 19],[52, 27],[61, 35],[69, 41],[78, 48],[86, 55],[93, 63],[99, 17]],
         ladder: [[5, 17],[13, 29],[23, 40],[37, 58],[46, 66]]
     }
 };
@@ -27,6 +27,6 @@ btn.addEventListener("click",()=>{
 
     localStorage.setItem("snake",levels[choose].snake);
     localStorage.setItem("ladder",levels[choose].ladder);
-    
+
     window.location.href="Snake.html";
 })
