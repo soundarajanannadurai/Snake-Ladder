@@ -1,111 +1,170 @@
 
-/* =========================================
-   SNAKE & LADDER — PREMIUM GAME UI
-   ========================================= */
+/* ============================================
+   SNAKE & LADDER — COMPLETE MODERN UI
+   Board table and cells are NOT modified.
+   ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
 
 :root {
-    --green: #16a34a;
-    --green-dark: #14532d;
-    --lime: #a3e635;
+    --green: #15803d;
+    --green-light: #22c55e;
     --purple: #7c3aed;
-    --yellow: #facc15;
-    --dark: #14251b;
+    --purple-dark: #5b21b6;
     --text: #1e293b;
+    --muted: #64748b;
     --white: #ffffff;
+    --border: #e2e8f0;
 }
+
+/* ========== GLOBAL STYLES ========== */
 
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+}
+
+html {
+    min-height: 100%;
+    scroll-behavior: smooth;
 }
 
 body {
     min-height: 100vh;
-    padding: 35px 20px;
+    margin: 0;
+    padding: 30px 20px 45px;
     font-family: 'Nunito', sans-serif;
     color: var(--text);
+
     background:
-        radial-gradient(ellipse at 10% 10%, #bbf7d0 0, transparent 35%),
-        radial-gradient(ellipse at 90% 90%, #d9f99d 0, transparent 35%),
-        linear-gradient(135deg, #ecfdf5, #f0fdf4 50%, #f7fee7);
+        radial-gradient(
+            circle at 8% 12%,
+            rgba(134, 239, 172, 0.55),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 92% 85%,
+            rgba(190, 242, 100, 0.35),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #ecfdf5,
+            #f0fdf4,
+            #f7fee7
+        );
 }
 
-/* Headings */
+/* ========== HEADINGS ========== */
 
 h1 {
+    margin: 0 0 22px;
     color: #166534;
     font-size: clamp(2rem, 5vw, 3.2rem);
     font-weight: 900;
     letter-spacing: -1px;
     text-align: center;
-    margin-bottom: 16px;
-    text-shadow: 0 3px 0 rgba(22, 101, 52, 0.10);
+    text-shadow: 0 3px 0 rgba(22, 101, 52, 0.08);
 }
 
 h2 {
-    text-align: center;
-    font-size: 1.5rem;
+    margin: 12px 0 22px;
+    color: #334155;
+    font-size: 1.6rem;
     font-weight: 800;
-    margin: 15px 0 24px;
 }
 
-h3, h4 {
+h3 {
+    margin: 18px 0 12px;
+    color: #334155;
+    font-size: 1.1rem;
     font-weight: 800;
-    margin: 15px 0 8px;
 }
 
-/* Inputs */
-
-input,
-select {
-    font: inherit;
+h4 {
+    margin: 14px 0 7px;
+    color: #334155;
+    font-size: 0.95rem;
+    font-weight: 800;
 }
+
+p {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+/* ========== INPUT FIELDS ========== */
 
 input {
-    width: 100%;
-    max-width: 400px;
     display: block;
-    padding: 14px 16px;
+    width: min(100%, 400px);
     margin: 8px 0 18px;
-    border: 2px solid #dcfce7;
-    border-radius: 14px;
+    padding: 14px 16px;
+
+    border: 2px solid #dbeafe;
+    border-radius: 13px;
+    outline: none;
+
     background: rgba(255, 255, 255, 0.95);
     color: var(--text);
-    outline: none;
-    transition: 0.25s ease;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 input:focus {
-    border-color: var(--green);
-    box-shadow: 0 0 0 5px rgba(22, 163, 74, 0.12);
+    border-color: #22c55e;
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.12);
 }
 
-/* All buttons */
+input::placeholder {
+    color: #94a3b8;
+}
+
+/* ========== BUTTONS ========== */
 
 button {
     padding: 13px 25px;
     border: none;
-    border-radius: 14px;
+    border-radius: 13px;
+
+    background: linear-gradient(
+        135deg,
+        #22c55e,
+        #15803d
+    );
+
     color: white;
-    background: linear-gradient(135deg, #22c55e, #15803d);
     font-family: inherit;
     font-size: 15px;
     font-weight: 900;
+
     cursor: pointer;
-    box-shadow: 0 6px 0 #166534, 0 10px 20px #16653420;
-    transition: transform 0.18s, box-shadow 0.18s;
+
+    box-shadow:
+        0 5px 0 #166534,
+        0 9px 18px rgba(22, 101, 52, 0.13);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
 }
 
 button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 9px 0 #166534, 0 15px 25px #16653425;
+    transform: translateY(-2px);
+    filter: brightness(1.04);
+
+    box-shadow:
+        0 7px 0 #166534,
+        0 13px 22px rgba(22, 101, 52, 0.18);
 }
 
 button:active {
-    transform: translateY(3px);
+    transform: translateY(2px);
     box-shadow: 0 2px 0 #166534;
 }
 
@@ -114,18 +173,57 @@ button:focus-visible {
     outline-offset: 4px;
 }
 
-/* Login and signup pages */
+/* ========== LOGIN PAGE ========== */
 
-body:has(#login),
-body:has(#signup) {
+body:has(#login) {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     padding: 35px 20px;
 }
 
-body:has(#login) h1,
+body:has(#login) h1 {
+    background: linear-gradient(135deg, #15803d, #65a30d);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+body:has(#login) h2 {
+    margin: 5px 0 20px;
+    color: #475569;
+    font-size: 1.3rem;
+}
+
+body:has(#login) h3 {
+    margin: 0 0 20px;
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+body:has(#login) h4 {
+    width: min(100%, 400px);
+}
+
+body:has(#login) input {
+    width: min(100%, 400px);
+}
+
+body:has(#login) p {
+    margin: 22px 0 8px;
+}
+
+/* ========== SIGNUP PAGE ========== */
+
+body:has(#signup) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 35px 20px;
+}
+
 body:has(#signup) h1 {
     background: linear-gradient(135deg, #15803d, #65a30d);
     background-clip: text;
@@ -133,278 +231,237 @@ body:has(#signup) h1 {
     -webkit-text-fill-color: transparent;
 }
 
-body:has(#login) h2,
 body:has(#signup) h2 {
-    color: #4b6353;
+    color: #475569;
 }
 
-body:has(#login) h3 {
-    color: #64748b;
-    font-size: 1rem;
-    margin: 0 0 20px;
-}
-
-body:has(#login) h4,
 body:has(#signup) h4 {
-    width: 100%;
-    max-width: 400px;
-    font-size: 0.95rem;
-    color: #334155;
+    width: min(100%, 400px);
 }
 
-body:has(#login) input,
 body:has(#signup) input {
-    max-width: 400px;
+    width: min(100%, 400px);
 }
 
-body:has(#login) p {
-    margin-top: 25px;
-    margin-bottom: 8px;
-}
+/* ========== LEVEL SELECTION ========== */
 
-/* Level selection */
+body:has(#level) {
+    text-align: center;
+}
 
 #level {
     display: block;
     width: min(350px, 100%);
+    margin: 22px auto;
     padding: 14px 16px;
-    margin: 25px auto;
+
     border: 2px solid #bbf7d0;
-    border-radius: 14px;
+    border-radius: 13px;
+    outline: none;
+
     background: white;
     color: #166534;
+
+    font-family: inherit;
+    font-size: 15px;
     font-weight: 800;
+
     cursor: pointer;
-    outline: none;
-    box-shadow: 0 8px 24px #16653410;
+
+    box-shadow: 0 8px 24px rgba(22, 101, 52, 0.08);
 }
 
 #level:focus {
-    border-color: var(--green);
+    border-color: #22c55e;
 }
 
-/* Game board layout */
+/* ========== GAME PAGE LAYOUT ========== */
+
+/* Center the game without changing the table itself */
 
 body:has(#table) {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 16px;
-    padding: 24px 12px 45px;
+    padding: 25px 12px 45px;
 }
 
-body:has(#table) h1 {
-    margin: 5px 0;
+body:has(#table) > h1 {
+    margin: 0 0 10px;
 }
 
-/* Board container */
+/*
+   IMPORTANT:
+   No CSS rules for #table or its cells.
+   Original board dimensions, colors, numbering,
+   snakes, ladders and player markers are preserved.
+*/
 
-#table {
-    width: min(94vw, 720px);
-    aspect-ratio: 1 / 1;
-    table-layout: fixed;
-    border-collapse: separate;
-    border-spacing: 4px;
-    padding: 10px;
-    background: #14532d;
-    border: 5px solid #166534;
-    border-radius: 18px;
-    box-shadow:
-        0 10px 0 #064e3b,
-        0 22px 40px rgba(20, 83, 45, 0.22);
-    overflow: hidden;
-}
-
-/* Board squares */
-
-#table td {
-    width: 10%;
-    height: auto;
-    padding: 2px;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-    vertical-align: middle;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.65);
-    background: linear-gradient(145deg, #ffffff, #dcfce7);
-    transition: transform 0.18s, filter 0.18s;
-}
-
-#table tr:nth-child(even) td:nth-child(odd),
-#table tr:nth-child(odd) td:nth-child(even) {
-    background: linear-gradient(145deg, #d9f99d, #bef264);
-}
-
-#table td:hover {
-    filter: brightness(1.08);
-    transform: scale(1.04);
-    z-index: 2;
-}
-
-/* Square numbers */
-
-#table td h5 {
-    position: absolute;
-    top: 3px;
-    left: 5px;
-    color: #365314;
-    font-size: clamp(8px, 1.5vw, 13px);
-    font-weight: 900;
-}
-
-/* Snake squares — JavaScript sets red inline */
-
-#table td[style*="red"] {
-    background: linear-gradient(145deg, #fca5a5, #ef4444) !important;
-    border-color: #fecaca;
-}
-
-/* Ladder squares — JavaScript sets green inline */
-
-#table td[style*="green"] {
-    background: linear-gradient(145deg, #86efac, #22c55e) !important;
-    border-color: #bbf7d0;
-}
-
-/* Player markers */
-
-#table td p {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 2px;
-    min-height: 22px;
-    margin: 8px 0 0;
-    color: #312e81;
-    font-size: clamp(8px, 1.5vw, 13px);
-    font-weight: 900;
-    overflow-wrap: anywhere;
-}
-
-/* Dice and game controls */
+/* ========== DICE PANEL ========== */
 
 #div {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    min-width: 180px;
-    padding: 18px 30px;
-    background: rgba(255, 255, 255, 0.85);
-    border: 1px solid white;
-    border-radius: 20px;
-    box-shadow: 0 12px 35px rgba(22, 101, 52, 0.10);
+    gap: 14px;
+
+    min-width: 190px;
+    margin: 0 auto;
+    padding: 22px 30px;
+
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 24px;
+
+    background: rgba(255, 255, 255, 0.78);
+
+    box-shadow:
+        0 12px 35px rgba(22, 101, 52, 0.10),
+        inset 0 1px 0 white;
+
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
+
+/* Dice number */
 
 #number {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+
     min-width: 75px;
     min-height: 75px;
-    padding: 8px;
     margin: 0;
+    padding: 8px;
+
     border: 3px solid #bbf7d0;
-    border-radius: 18px;
-    background: linear-gradient(145deg, #ffffff, #ecfccb);
+    border-radius: 19px;
+
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #ecfccb
+    );
+
     color: #166534;
     font-size: 2.5rem;
     font-weight: 900;
-    box-shadow: inset 0 -4px 0 #d9f99d;
+
+    box-shadow:
+        inset 0 -4px 0 #d9f99d,
+        0 5px 15px rgba(22, 101, 52, 0.08);
 }
 
+/* Dice control buttons */
+
 #div button {
-    min-width: 130px;
-    background: linear-gradient(135deg, #7c3aed, #5b21b6);
-    box-shadow: 0 6px 0 #4c1d95, 0 10px 20px #5b21b625;
+    min-width: 135px;
+
+    background: linear-gradient(
+        135deg,
+        #8b5cf6,
+        #6d28d9
+    );
+
+    box-shadow:
+        0 5px 0 #4c1d95,
+        0 9px 18px rgba(109, 40, 217, 0.15);
 }
 
 #div button:hover {
-    box-shadow: 0 9px 0 #4c1d95, 0 14px 25px #5b21b630;
+    box-shadow:
+        0 7px 0 #4c1d95,
+        0 13px 22px rgba(109, 40, 217, 0.2);
 }
 
-/* Current player and game status */
+/* ========== GAME STATUS ========== */
 
 #status {
-    min-width: 180px;
-    padding: 12px 22px;
+    min-width: 190px;
     margin: 0;
+    padding: 12px 22px;
+
     border: 1px solid #bbf7d0;
     border-radius: 14px;
-    background: white;
+
+    background: rgba(255, 255, 255, 0.92);
     color: #166534;
-    text-align: center;
-    font-size: 1.1rem;
+
+    font-size: 1.05rem;
     font-weight: 900;
-    box-shadow: 0 8px 22px #16653410;
+    text-align: center;
+
+    box-shadow: 0 7px 20px rgba(22, 101, 52, 0.08);
 }
 
-/* Logout */
+/* ========== LOGOUT BUTTON ========== */
 
 #logout {
-    background: linear-gradient(135deg, #f97316, #ea580c);
-    box-shadow: 0 5px 0 #9a3412, 0 10px 20px #9a341220;
+    margin: 10px 0;
+
+    background: linear-gradient(
+        135deg,
+        #fb923c,
+        #ea580c
+    );
+
+    box-shadow:
+        0 5px 0 #9a3412,
+        0 9px 18px rgba(234, 88, 12, 0.15);
 }
 
 #logout:hover {
-    box-shadow: 0 8px 0 #9a3412, 0 14px 25px #9a341225;
+    box-shadow:
+        0 7px 0 #9a3412,
+        0 13px 22px rgba(234, 88, 12, 0.2);
 }
 
-/* Mobile support */
+/* ========== MOBILE RESPONSIVENESS ========== */
 
 @media (max-width: 600px) {
     body {
-        padding: 22px 12px;
+        padding: 22px 14px 35px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
     }
 
     body:has(#table) {
-        padding: 16px 5px 30px;
-    }
-
-    #table {
-        width: 98vw;
-        border-spacing: 2px;
-        padding: 5px;
-        border-width: 3px;
-        border-radius: 12px;
-    }
-
-    #table td {
-        border-radius: 4px;
-        padding: 1px;
-    }
-
-    #table td h5 {
-        top: 1px;
-        left: 2px;
-    }
-
-    #table td p {
-        min-height: 15px;
-        margin-top: 7px;
+        padding: 18px 8px 35px;
     }
 
     #div {
-        padding: 14px 22px;
+        min-width: 170px;
+        padding: 18px 24px;
     }
 
     #number {
-        min-width: 60px;
-        min-height: 60px;
-        font-size: 2rem;
+        min-width: 65px;
+        min-height: 65px;
+        font-size: 2.1rem;
+    }
+
+    button {
+        padding: 12px 20px;
     }
 }
 
-/* Accessibility */
+/* ========== REDUCED MOTION ========== */
 
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        transition: none !important;
+    html {
+        scroll-behavior: auto;
+    }
+
+    button,
+    input {
+        transition: none;
     }
 }
